@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
-import types #nao preciso acho
+import os
+# import types #nao preciso acho
 
 """
 ord > e a funcao que vai pegar o codigo unicode da letra representada por i
@@ -14,7 +15,6 @@ def convert_bin(texto):
         for i in texto:
             temp += format(ord(i), "08b")
         # texto = texto.strip('\n')    
-        print (temp)
         return temp 
         # print(''.join( [ format(ord(i), "08b") for i in texto ] ))
         # return ''.join( [ format(ord(i), "08b") for i in texto ] )   
@@ -129,7 +129,11 @@ def main():
 
         nova_imagem = inserir_texto_img(imagem, texto)
         cv2.imwrite(nome_img_res, nova_imagem)
-
+        #"{:.5f}".format / (1024*1024)
+        fi = os.stat(nome_img_res)
+        print("Tamanho da nova imagem:", ( fi.st_size ), "Bytes")
+        fi = os.stat(nome_img)
+        print("Tamanho da original: ", ( fi.st_size ), " Bytes")
         ## inserir a verificacao de diferenca de tamanho talvez entre o arquivo original e o resultante?
 
 
