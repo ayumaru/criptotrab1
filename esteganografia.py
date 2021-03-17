@@ -16,10 +16,10 @@ def convert_bin(texto):
         return temp     
  
     elif type(texto) == bytes or type(texto) == np.ndarray: #tenho impressao que o nparray eh o que vem da memoria        
-        return np.array( [ format(i, "08b") for i in texto ] )
+        return [ format(i, "08b") for i in texto ] 
 
     elif type(texto) == int or type(texto) == np.uint8:
-        return format(message, "08b") 
+        return format(message, "08b")  
     
     else:
         print("Mensagem nao suportada")
@@ -38,7 +38,7 @@ def inserir_texto_img(img, txt):
     
     nb =((img.shape[0] * img.shape[1])* 3)//8
     print("Tamanho da imagem inserida: ", img.shape[0] ,"x" ,img.shape[1], "\n")
-    print("Maximo de caracteres possiveis no texto: ", nb, "\n") #recalcular isso
+    print("Maximo de caracteres possiveis no texto: ", nb, "\n") 
     print("Seu texto possui: ", len(txt), " caracteres.\n")
 
     txt += "@!@!@" # @ > delimitador do texto
@@ -81,7 +81,7 @@ def retirar_texto(img):
     palavra_txt = ""
 
     for b in palavra_byte:
-        palavra_txt += chr(int(b,2)) #transforma pra decimal (?) printar aqui depois
+        palavra_txt += chr(int(b,2)) #transforma pra decimal 
 
         if palavra_txt[-5:] == "@!@!@": #delimitador definido na hora de esconder o texto
             break
