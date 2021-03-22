@@ -19,7 +19,7 @@ def convert_bin(texto):
         return [ format(i, "08b") for i in texto ] 
 
     elif type(texto) == int or type(texto) == np.uint8:
-        return format(message, "08b")  
+        return format(texto, "08b")  
     
     else:
         print("Mensagem nao suportada")
